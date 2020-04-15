@@ -6,6 +6,6 @@ namespace Domain
 {
     public interface ICalculator
     {
-        int Calculate();
+        double Calculate(List<double> measurements);
     }
 }
