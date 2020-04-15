@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Domain;
 
 namespace Logic_Layer
 {
@@ -19,5 +20,7 @@ namespace Logic_Layer
         public int _Pulse { get; set; }
 
         public int _HRV { get; set; }
+
+        public HRV_Calculator.Toppunkt 
     }
 }

@@ -6,11 +6,13 @@ namespace Domain
 {
     public class Pulse_Calculator : ICalculator
     {
-        public int Calculate()
-        {
-            int _Pulse = 60;
+        private R_peak r_peaks_;
 
-            return _Pulse;
+        public double Calculate(List<double> measurements)
+        {
+            r_peaks_ = new R_peak(measurements);
+            //Her skal returneres en puls udfra listen med Vertex
+            return 1.1;
         }
     }
 }
