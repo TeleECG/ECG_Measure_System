@@ -84,23 +84,26 @@
             // 
             // CPRTB
             // 
+            this.CPRTB.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CPRTB.Location = new System.Drawing.Point(219, 130);
             this.CPRTB.Name = "CPRTB";
-            this.CPRTB.Size = new System.Drawing.Size(375, 31);
+            this.CPRTB.Size = new System.Drawing.Size(375, 34);
             this.CPRTB.TabIndex = 4;
             // 
             // NameTB
             // 
+            this.NameTB.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NameTB.Location = new System.Drawing.Point(219, 204);
             this.NameTB.Name = "NameTB";
-            this.NameTB.Size = new System.Drawing.Size(375, 31);
+            this.NameTB.Size = new System.Drawing.Size(375, 34);
             this.NameTB.TabIndex = 5;
             // 
             // AdressTB
             // 
+            this.AdressTB.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AdressTB.Location = new System.Drawing.Point(219, 273);
             this.AdressTB.Name = "AdressTB";
-            this.AdressTB.Size = new System.Drawing.Size(375, 31);
+            this.AdressTB.Size = new System.Drawing.Size(375, 34);
             this.AdressTB.TabIndex = 6;
             // 
             // SaveB

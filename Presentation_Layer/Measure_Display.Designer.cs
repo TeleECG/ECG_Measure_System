@@ -67,6 +67,7 @@
             this.MeasureNumberTB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.MeasureNumberTB.Location = new System.Drawing.Point(617, 30);
             this.MeasureNumberTB.Name = "MeasureNumberTB";
+            this.MeasureNumberTB.ReadOnly = true;
             this.MeasureNumberTB.Size = new System.Drawing.Size(69, 34);
             this.MeasureNumberTB.TabIndex = 2;
             this.MeasureNumberTB.Visible = false;
@@ -89,8 +90,10 @@
             this.NameMeasureTB.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.NameMeasureTB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.NameMeasureTB.Location = new System.Drawing.Point(84, 30);
+            this.NameMeasureTB.Multiline = true;
             this.NameMeasureTB.Name = "NameMeasureTB";
-            this.NameMeasureTB.Size = new System.Drawing.Size(273, 34);
+            this.NameMeasureTB.ReadOnly = true;
+            this.NameMeasureTB.Size = new System.Drawing.Size(273, 31);
             this.NameMeasureTB.TabIndex = 4;
             this.NameMeasureTB.Visible = false;
             // 
