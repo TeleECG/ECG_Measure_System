@@ -6,12 +6,9 @@ namespace Domain
 {
     public class Pulse_Calculator : ICalculator
     {
-        private R_peak r_peaks_;
-
-        
-        public double Calculate(List<double> measurements)
+                        
+        public double Calculate(List<double> measurements)//Denne metode skal kaldes i controller-klassen og have en liste med toppunkter som parameter
         {
-            r_peaks_ = new R_peak(measurements);
             int pulsPrMin_ = measurements.Count * 6;//Hvis listen indeholder 10 sekunders data
             return pulsPrMin_;
         }
