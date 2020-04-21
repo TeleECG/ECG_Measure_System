@@ -20,7 +20,7 @@ namespace Domain
             dataList_ = measurements;
         }
 
-        public List<Vertex> ReturnVertex()
+        public List<Vertex> ReturnVertex()//Returnere en liste med toppunkter
         {
             for (int i = 0; i < dataList_.Count; i++)
             {
@@ -37,14 +37,14 @@ namespace Domain
             {
                 if (dataList_[i] != 0)
                 {
-                    if (peakYvalue < dataList_[i])
+                    if (peakYvalue < dataList_[i])//øvrige punkter til listen med toppunkter
                     {
                         peakYvalue = dataList_[i];
                         peakXValue = i * 0.005;//Undersøg denne
                         myVertex = new Vertex(peakYvalue, peakXValue);
                     }
                 }
-                if (dataList_[i - 1] != 0 && dataList_[i] == 0)
+                if (dataList_[i - 1] != 0 && dataList_[i] == 0) //Start værdi
                 {
                     vertexValues_.Add(myVertex);
                     peakYvalue = dataList_[0];

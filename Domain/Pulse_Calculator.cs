@@ -8,11 +8,12 @@ namespace Domain
     {
         private R_peak r_peaks_;
 
+        
         public double Calculate(List<double> measurements)
         {
             r_peaks_ = new R_peak(measurements);
-            //Her skal returneres en puls udfra listen med Vertex
-            return 1.1;
+            int pulsPrMin_ = measurements.Count * 6;//Hvis listen indeholder 10 sekunders data
+            return pulsPrMin_;
         }
     }
 }
