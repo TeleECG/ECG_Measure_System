@@ -6,7 +6,6 @@ namespace Domain
 {
     public class HRV_Calculator : ICalculator
     {
-               
         private double RRinterval_;
         private R_peak r_peaks_;
         private List<double> listOfRRintervals_;
