@@ -11,14 +11,16 @@ namespace Presentation_Layer
 {
     public partial class Patient_Display : Form
     {
-        string CPR = "";
-        string Name = "";
-        string Adress = "";
+        private string CPR { get; set; }
+        string Name { get; set; }
+        string Adress { get; set; }
         Enter_Patient_Data_Controller _patient_controller;
-        public Patient_Display(Enter_Patient_Data_Controller patient_controller)
+        Measure_Display _measure_display; 
+        public Patient_Display(Enter_Patient_Data_Controller patient_controller, Measure_Display measure_Display)
         {
             InitializeComponent();
             _patient_controller = patient_controller;
+            _measure_display = measure_Display;
 
         }
 
@@ -36,6 +38,15 @@ namespace Presentation_Layer
         private void AdressTB_TextChanged(object sender, EventArgs e)
         {
             Adress = AdressTB.Text;
+        }
+
+        private void SaveB_Click(object sender, EventArgs e)
+        {
+            //Maria har kode til at tjekke cpr.
+
+            _patient_controller.SavePatientData(CPR,Name,Adress);
+            _measure_display.ShowDialog();
+
         }
     }
 }

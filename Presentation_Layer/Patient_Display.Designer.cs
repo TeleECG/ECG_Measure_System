@@ -120,6 +120,7 @@
             this.SaveB.TabIndex = 7;
             this.SaveB.Text = "Gem patientoplysninger";
             this.SaveB.UseVisualStyleBackColor = false;
+            this.SaveB.Click += new System.EventHandler(this.SaveB_Click);
             // 
             // Patient_Display
             // 
