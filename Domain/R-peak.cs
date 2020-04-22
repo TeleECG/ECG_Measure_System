@@ -40,23 +40,23 @@ namespace Domain
                     if (peakYvalue < dataList_[i])
                     {
                         peakYvalue = dataList_[i];
-                        peakXValue = i * 0.005;//Undersøg denne
+                        peakXValue = i * 0.005;//Undersøg denne, 
                         myVertex = new Vertex(peakYvalue, peakXValue);
                     }
                 }
                 if (dataList_[i - 1] != 0 && dataList_[i] == 0)
                 {
-                    vertexValues_.Add(myVertex);
-                    peakYvalue = dataList_[0];
+                    if (peakYvalue != 0 && peakXValue != 0)
+                    {
+                        vertexValues_.Add(myVertex);
+                    }
+                    //vertexValues_.Add(myVertex);
+                    peakYvalue = 0;//Der stod før dataList_[0]
                     peakXValue = 0;
-                    myVertex = new Vertex(peakYvalue, peakXValue);
+                    myVertex = new Vertex(peakYvalue, peakXValue);//Er denne nødvendig
                 }
             }
-            if (peakYvalue != 0 && peakXValue != 0)
-            {
-                vertexValues_.Add(myVertex);
-            }
-
+           
             return vertexValues_;
         }
     }
