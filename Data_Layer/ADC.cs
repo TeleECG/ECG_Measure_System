@@ -7,6 +7,7 @@ namespace Data_Layer
 {
     public class ADC : IADC
     {
+        //Indlæs signal fra Physionet
 
     }
 }
