@@ -89,6 +89,7 @@
             this.CPRTB.Name = "CPRTB";
             this.CPRTB.Size = new System.Drawing.Size(375, 34);
             this.CPRTB.TabIndex = 4;
+            this.CPRTB.TextChanged += new System.EventHandler(this.CPRTB_TextChanged);
             // 
             // NameTB
             // 
@@ -97,6 +98,7 @@
             this.NameTB.Name = "NameTB";
             this.NameTB.Size = new System.Drawing.Size(375, 34);
             this.NameTB.TabIndex = 5;
+            this.NameTB.TextChanged += new System.EventHandler(this.NameTB_TextChanged);
             // 
             // AdressTB
             // 
@@ -105,6 +107,7 @@
             this.AdressTB.Name = "AdressTB";
             this.AdressTB.Size = new System.Drawing.Size(375, 34);
             this.AdressTB.TabIndex = 6;
+            this.AdressTB.TextChanged += new System.EventHandler(this.AdressTB_TextChanged);
             // 
             // SaveB
             // 
