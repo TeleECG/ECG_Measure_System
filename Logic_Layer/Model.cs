@@ -15,7 +15,7 @@ namespace Logic_Layer
 
         public DateTime _Date { get; set; }
 
-        public List<List<double>> _ECG { get; set; }
+        public List<double> _ECG { get; set; }
 
         public int _Pulse { get; set; }
 
