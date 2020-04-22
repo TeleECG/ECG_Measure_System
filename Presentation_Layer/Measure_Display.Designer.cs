@@ -59,6 +59,7 @@
             this.Start_SendB.TabIndex = 1;
             this.Start_SendB.Text = "Start EKG-måling";
             this.Start_SendB.UseVisualStyleBackColor = false;
+            this.Start_SendB.Click += new System.EventHandler(this.Start_SendB_Click);
             // 
             // MeasureNumberTB
             // 

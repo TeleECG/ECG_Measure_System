@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Logic_Layer\Logic_Layer.csproj" />
+  </ItemGroup>
+
 </Project>
