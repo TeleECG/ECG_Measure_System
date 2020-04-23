@@ -6,8 +6,12 @@ using System;
 
 namespace MainApp
 {
-    class Program
+    public class Program
     {
+        static void Main(string[] args)
+        {
+            
+        }
         public Program()
         {
             //Datalayer
@@ -26,14 +30,13 @@ namespace MainApp
             ICalculator pulse_calculator = new Pulse_Calculator();
 
             //Forms
-            IForm program = new Program()
-
-        }
-
-        static void Main(string[] args)
-        {
+            Measure_Display measure_Display = new Measure_Display(send_ECG_Controller);
+            IForm GUI_program = new GUI_program(patient_Data_Controller, measure_Display);
+            GUI_program.Start();
 
 
         }
+
+        
     }
 }

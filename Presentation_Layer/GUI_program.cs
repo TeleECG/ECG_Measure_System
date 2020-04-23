@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace Presentation_Layer
 {
-    public class Program : IForm
+    public class GUI_program : IForm
     {
         Enter_Patient_Data_Controller _patient_Data_Controller;
         Measure_Display _measure_Display;
 
-        public Program(Enter_Patient_Data_Controller patient_Data_Controller, Measure_Display measure_Display )
+        public GUI_program(Enter_Patient_Data_Controller patient_Data_Controller, Measure_Display measure_Display )
         {
             _patient_Data_Controller = patient_Data_Controller;
             _measure_Display = measure_Display;
