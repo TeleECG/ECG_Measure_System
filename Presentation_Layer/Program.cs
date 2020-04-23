@@ -7,14 +7,13 @@ using System.Windows.Forms;
 
 namespace Presentation_Layer
 {
-    public class Program //Der stod static først
+    static class Program //Der stod static først
     {
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         /// 
-        Enter_Patient_Data_Controller _patient_Data_Controller;
-        Measure_Display _measure_Display;
+
         public Program(Enter_Patient_Data_Controller patient_Data_Controller, Measure_Display measure_Display )
         {
             _patient_Data_Controller = patient_Data_Controller;
@@ -22,8 +21,11 @@ namespace Presentation_Layer
         }
         [STAThread]
        
-        public override void Main()
+        static void Main()
         {
+            Enter_Patient_Data_Controller _patient_Data_Controller = new Enter_Patient_Data_Controller();
+            Measure_Display _measure_Display = new Measure_Display();
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
