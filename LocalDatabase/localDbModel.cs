@@ -37,17 +37,18 @@ namespace LocalDatabase
     //}
     public class BloggingContext : DbContext
     {
-        public DbSet<Patient> Blogs { get; set; }
-        public DbSet<ECGMeasurement> Posts { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<ECGMeasurement> ECGMeasurements { get; set; }
+        public DbSet<ECGLead> ECGLeads { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=LocalPatientDb.db");
+            => options.UseSqlite("Data Source=LocalPatientDbV1.db");
     }
 
     public class Patient
     {
-        public int ID { get; set; }
-        public string Url { get; set; }
+        public int PatientId { get; set; }
+        public string CPRNumber { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public DateTime Date { get; set; }
@@ -59,13 +60,24 @@ namespace LocalDatabase
 
     public class ECGMeasurement
     {
-        public int MeasurementId { get; set; }
+        public int ECGMeasurementId { get; set; }
         //public List<int> Values { get; set; } = new List<int>();
         public string Title { get; set; }
         public string Content { get; set; }
-        public int ID { get; set; }
+        public int PatientId { get; set; }
         public Patient Patient { get; set; }
+        public List<ECGLead> ECGLeads { get; set; } = new List<ECGLead>();
+    }
+    public class ECGLead
+    {
+        public int ECGLeadId { get; set; }
+        public ECGMeasurement ECGMeasurement { get; set; }
+        public int ECGMeasurementId { get; set; }
+        public int LeadNumber { get; set; }
+        public int ECGLeadValue { get; set; }
+        //public List<double> ECGLeadValues { get; set; } = new List<double>();
+
     }
 
-    
+
 }
