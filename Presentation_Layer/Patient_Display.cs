@@ -56,12 +56,14 @@ namespace Presentation_Layer
             {
                 _patient_controller.SavePatientData(CPR, Name, Adress);
                 _measure_display.ShowDialog();
+                
             }
             else if(CPRCheck = false)
             {
                 MessageBox.Show("Ugyldigt CPR-nummer. Indtast nyt CPR-nummer.");
             }
             
+
         }
 
         public bool checkCPR(string CPR)
