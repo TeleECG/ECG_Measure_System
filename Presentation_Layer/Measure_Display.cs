@@ -41,5 +41,10 @@ namespace Presentation_Layer
             }
 
         }
+
+        private void Regret_ECGB_Click(object sender, EventArgs e)
+        {
+            this.Hide();//Skjuler measure display, således at patient display kommer frem
+        }
     }
 }
