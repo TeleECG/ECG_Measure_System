@@ -11,7 +11,7 @@ namespace Data_Layer
     public class ADC : IADC
     {
         //Indlæs signal fra Physionet
-        public void ReadCsv()
+        public void ReadCsvLead1()
         {
             //1. Lead
             var csvTable = new DataTable();
@@ -19,14 +19,19 @@ namespace Data_Layer
             {
                 csvTable.Load(csvReader);
             }
+        }
 
+        public void ReadCsvLead2() {
             //2. Lead
             var csvTable2 = new DataTable();
             using (var csvReader2 = new CsvReader(new StreamReader(System.IO.File.OpenRead(@"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\EKG-signaler\2Lead.csv")), true))
             {
                 csvTable2.Load(csvReader2);
             }
+        }
 
+        public void ReadCsvLead3()
+        {
             var csvTable3 = new DataTable();
             using (var csvReader3 = new CsvReader(new StreamReader(System.IO.File.OpenRead(@"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\EKG-signaler\3Lead.csv")), true))
             {
