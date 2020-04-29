@@ -27,6 +27,7 @@ namespace Data_Layer
                 csvTable2.Load(csvReader2);
             }
 
+            //3. Lead
             var csvTable3 = new DataTable();
             using (var csvReader3 = new CsvReader(new StreamReader(System.IO.File.OpenRead(@"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\EKG-signaler\3Lead.csv")), true))
             {
