@@ -25,7 +25,7 @@ namespace Presentation_Layer
             //Dette sker efter tredje måling 
             counter = 3;
             Start_SendB.Text = "Send målinger";
-
+            
             //Når counter er 3, og målinger skal sendes
             if(counter == 3)
             {
