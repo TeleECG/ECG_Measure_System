@@ -143,7 +143,7 @@
         private System.Windows.Forms.Button Start_SendB;
         private System.Windows.Forms.TextBox MeasureNumberTB;
         private System.Windows.Forms.Label NameL;
-        private System.Windows.Forms.TextBox NameMeasureTB;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox NameMeasureTB;
     }
 }
