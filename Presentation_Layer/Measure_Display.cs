@@ -22,6 +22,7 @@ namespace Presentation_Layer
 
         private void Start_SendB_Click(object sender, EventArgs e)
         {
+           
             //Dette sker efter tredje måling 
             counter = 3;
             Start_SendB.Text = "Send målinger";
