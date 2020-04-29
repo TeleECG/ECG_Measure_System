@@ -26,7 +26,7 @@ namespace Presentation_Layer
             //Dette sker efter tredje måling 
             counter = 3;
             Start_SendB.Text = "Send målinger";
-
+            
             //Når counter er 3, og målinger skal sendes
             if(counter == 3)
             {
@@ -41,6 +41,11 @@ namespace Presentation_Layer
                     MessageBox.Show("Målingerne er sendt.");
             }
 
+        }
+
+        private void Regret_ECGB_Click(object sender, EventArgs e)
+        {
+            this.Hide();//Skjuler measure display, således at patient display kommer frem
         }
     }
 }
