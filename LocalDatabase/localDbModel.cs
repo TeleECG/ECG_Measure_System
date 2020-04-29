@@ -45,17 +45,16 @@ namespace LocalDatabase
             => options.UseSqlite("Data Source=LocalPatientDbV1.db");
     }
 
-    public class Patient
+    public class Patient // Patientklassen sendes i databasen med følgende: 
     {
-        public int PatientId { get; set; }
-        public string CPRNumber { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public DateTime Date { get; set; }
-        public int Pulse { get; set; }
-        public int HRV { get; set; }
-
-        public List<ECGMeasurement> ECGMeasurements { get; } = new List<ECGMeasurement>();
+        public int PatientId { get; set; } //Et autogenerede Id-nummer, der kun passer til den specifikke patient. 
+        public string CPRNumber { get; set; } // CPR-nummer tilhørende patienten, som indtastes på brugergrænsefladen.
+        public string Name { get; set; } // Navn tilhørende patienten, som indtastes på brugergrænsefladen.
+        public string Address { get; set; } // Adresse tilhørende patienten, som indtastes på brugergrænsefladen.
+        public DateTime Date { get; set; } // Autogenereret dato, der passer til tidspunktet dataen flyttes til databasen. 
+        public int Pulse { get; set; } // Patientens puls, som er udregnet ud fra den målte EKG data.
+        public int HRV { get; set; } // Patientens HRV, som er udregnet ud fra den målte EKG data.
+        public List<ECGMeasurement> ECGMeasurements { get; } = new List<ECGMeasurement>(); // En liste bestående af objekter af klassen ECGMeasurement.
     }
 
     public class ECGMeasurement
