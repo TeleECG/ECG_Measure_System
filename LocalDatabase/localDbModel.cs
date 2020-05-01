@@ -11,7 +11,7 @@ namespace LocalDatabase
 {
     public class PatientContext : DbContext //Omdøb eventuelt klasse til "PatientContext"
     {
-        public DbSet<PatientMeasurement> Patients { get; set; } // En liste af patients - den modsvarer tabellen i databasen. 
+        public DbSet<PatientMeasurement> PatientMeasurements { get; set; } // En liste af patients - den modsvarer tabellen i databasen. 
         public DbSet<ECGMeasurement> ECGMeasurements { get; set; } // En liste af ECGMeasurements - den modsvarer tabellen i databasen.
         public DbSet<ECGLead> ECGLeads { get; set; } // En liste af ECGLeads - den modsvarer tabellen i databasen.
 

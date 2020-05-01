@@ -11,7 +11,7 @@ namespace Presentation_Layer
 {
     public partial class Measure_Display : Form
     {
-        int counter = 0;
+        public int counter { get; set; }
         Send_ECG_Controller _send_ECG_Controller;
 
         public Measure_Display(Send_ECG_Controller send_ECG_Controller)
