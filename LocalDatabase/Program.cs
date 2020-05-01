@@ -26,7 +26,7 @@ namespace LocalDatabase
                 ECGM.ECGLeads.Add(ECGLead1); // Her tilføjes ECGLead objektet til listen af ECGLead i ECGMeasurement
                 ECGM.ECGLeads.Add(ECGLead2); // Her tilføjes ECGLead objektet til listen af ECGLead i ECGMeasurement
                 Patient.ECGMeasurements.Add(ECGM); // Her tilføjes ECGMeasurement objektet til listen af ECGMeasurement i Patient
-                db.Add(Patient); //Her tilføjes Patient objektet til BloggingContext
+                db.Patients.Add(Patient); //Her tilføjes Patient objektet til BloggingContext
                 db.SaveChanges(); //Det gemmes
 
 
