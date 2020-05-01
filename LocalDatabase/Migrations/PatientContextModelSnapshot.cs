@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocalDatabase.Migrations
 {
-    [DbContext(typeof(BloggingContext))]
-    partial class BloggingContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PatientContext))]
+    partial class PatientContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,8 +22,8 @@ namespace LocalDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ECGLeadValue")
-                        .HasColumnType("INTEGER");
+                    b.Property<byte[]>("ECGLeadValues")
+                        .HasColumnType("BLOB");
 
                     b.Property<int>("ECGMeasurementId")
                         .HasColumnType("INTEGER");
@@ -44,25 +44,22 @@ namespace LocalDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Content")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PatientId")
+                    b.Property<int>("MeasurementNumber")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PatientMeasurementId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("ECGMeasurementId");
 
-                    b.HasIndex("PatientId");
+                    b.HasIndex("PatientMeasurementId");
 
                     b.ToTable("ECGMeasurements");
                 });
 
-            modelBuilder.Entity("LocalDatabase.Patient", b =>
+            modelBuilder.Entity("LocalDatabase.PatientMeasurement", b =>
                 {
-                    b.Property<int>("PatientId")
+                    b.Property<int>("PatientMeasurementId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -84,9 +81,9 @@ namespace LocalDatabase.Migrations
                     b.Property<int>("Pulse")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("PatientId");
+                    b.HasKey("PatientMeasurementId");
 
-                    b.ToTable("Patients");
+                    b.ToTable("PatientMeasurements");
                 });
 
             modelBuilder.Entity("LocalDatabase.ECGLead", b =>
@@ -100,9 +97,9 @@ namespace LocalDatabase.Migrations
 
             modelBuilder.Entity("LocalDatabase.ECGMeasurement", b =>
                 {
-                    b.HasOne("LocalDatabase.Patient", "Patient")
+                    b.HasOne("LocalDatabase.PatientMeasurement", "PatientMeasurement")
                         .WithMany("ECGMeasurements")
-                        .HasForeignKey("PatientId")
+                        .HasForeignKey("PatientMeasurementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

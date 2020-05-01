@@ -16,12 +16,12 @@ namespace LocalDatabase
         public DbSet<ECGLead> ECGLeads { get; set; } // En liste af ECGLeads - den modsvarer tabellen i databasen.
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=LocalPatientDbV2.db"); // Åbner forbindelse til database og holder øje med at der er konsistens mellem database og koden
+            => options.UseSqlite("Data Source=LocalDb_Version1.db"); // Åbner forbindelse til database og holder øje med at der er konsistens mellem database og koden
     }
 
     public class PatientMeasurement // Patient klassen sendes i databasen med følgende: 
     {
-        public int PatientId { get; set; } //Et autogenerede Id-nummer, der kun passer til den specifikke patient. 
+        public int PatientMeasurementId { get; set; } //Et autogenerede Id-nummer, der kun passer til den specifikke patient. 
         public string CPRNumber { get; set; } // CPR-nummer tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Name { get; set; } // Navn tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Address { get; set; } // Adresse tilhørende patienten, som indtastes på brugergrænsefladen.
@@ -35,7 +35,7 @@ namespace LocalDatabase
     {
         public int ECGMeasurementId { get; set; } //Et autogenerede Id-nummer, der kun passer til den specifikke ECGMeasurement. 
         public PatientMeasurement PatientMeasurement { get; set; } //Objekt af Patient klassen
-        public int PatientId { get; set; } //Tilknytter ECGMeasurement til den specifikke Patient via PatientId
+        public int PatientMeasurementId { get; set; } //Tilknytter ECGMeasurement til den specifikke Patient via PatientId
         public int MeasurementNumber { get; set; } // Et nummer der afgør om det er 1., 2., eller 3. måling
         public List<ECGLead> ECGLeads { get; set; } = new List<ECGLead>(); // En liste bestående af objekter af klassen ECGLead.
     }

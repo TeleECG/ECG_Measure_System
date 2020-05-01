@@ -8,12 +8,12 @@ namespace LocalDatabase.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Patients",
+                name: "PatientMeasurements",
                 columns: table => new
                 {
-                    PatientId = table.Column<int>(nullable: false)
+                    PatientMeasurementId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Url = table.Column<string>(nullable: true),
+                    CPRNumber = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
@@ -22,7 +22,7 @@ namespace LocalDatabase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patients", x => x.PatientId);
+                    table.PrimaryKey("PK_PatientMeasurements", x => x.PatientMeasurementId);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,18 +31,17 @@ namespace LocalDatabase.Migrations
                 {
                     ECGMeasurementId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(nullable: true),
-                    Content = table.Column<string>(nullable: true),
-                    PatientId = table.Column<int>(nullable: false)
+                    PatientMeasurementId = table.Column<int>(nullable: false),
+                    MeasurementNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ECGMeasurements", x => x.ECGMeasurementId);
                     table.ForeignKey(
-                        name: "FK_ECGMeasurements_Patients_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "Patients",
-                        principalColumn: "PatientId",
+                        name: "FK_ECGMeasurements_PatientMeasurements_PatientMeasurementId",
+                        column: x => x.PatientMeasurementId,
+                        principalTable: "PatientMeasurements",
+                        principalColumn: "PatientMeasurementId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -54,7 +53,7 @@ namespace LocalDatabase.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ECGMeasurementId = table.Column<int>(nullable: false),
                     LeadNumber = table.Column<int>(nullable: false),
-                    ECGLeadValue = table.Column<int>(nullable: false)
+                    ECGLeadValues = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,9 +72,9 @@ namespace LocalDatabase.Migrations
                 column: "ECGMeasurementId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ECGMeasurements_PatientId",
+                name: "IX_ECGMeasurements_PatientMeasurementId",
                 table: "ECGMeasurements",
-                column: "PatientId");
+                column: "PatientMeasurementId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -87,7 +86,7 @@ namespace LocalDatabase.Migrations
                 name: "ECGMeasurements");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                name: "PatientMeasurements");
         }
     }
 }

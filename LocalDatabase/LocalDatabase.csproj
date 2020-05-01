@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Logic_Layer\Logic_Layer.csproj" />
-    <ProjectReference Include="..\Presentation_Layer\Presentation_Layer.csproj" />
   </ItemGroup>
 
 </Project>
