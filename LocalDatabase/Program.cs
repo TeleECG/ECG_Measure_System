@@ -18,7 +18,7 @@ namespace LocalDatabase
                 var ECGMeasurement1 = new ECGMeasurement(); //Opretter objekt af ECGMeasuremnt
                 var ECGMeasurement2 = new ECGMeasurement(); //Opretter objekt af ECGMeasuremnt
                 var ECGMeasurement3 = new ECGMeasurement(); //Opretter objekt af ECGMeasuremnt
-                var ECGLead1_1 = new ECGLead(); //Opretter objekt af ECGLead
+                var ECGLead1_1 = new ECGLead() {ECGLeadValues=_model.ECGLeadValues }; //Opretter objekt af ECGLead
                 var ECGLead2_1 = new ECGLead(); //Opretter nyt objekt af ECGLead
                 var ECGLead3_1 = new ECGLead(); //Opretter endnu et nyt objekt af ECGLead
                 var ECGLead1_2 = new ECGLead(); //Opretter objekt af ECGLead
