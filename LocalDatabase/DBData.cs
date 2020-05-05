@@ -19,8 +19,6 @@ namespace Databases
             Name = name;
             Address = address;
             Date = DateTime.Now;
-            Pulse = 0;
-            HRV = 0;
 
             for (int i = 1; i < 4; i++)
             {
