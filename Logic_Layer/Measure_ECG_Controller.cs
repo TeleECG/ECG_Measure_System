@@ -14,7 +14,7 @@ namespace Logic_Layer
         private ICalculator _HRV;
         private ICalculator _puls;
 
-        public Measure_ECG_Controller(Model model, ADC ADC, ICalculator HRV, ICalculator puls)
+        public Measure_ECG_Controller(Model model, ADC ADC, HRV_Calculator HRV, Pulse_Calculator puls)
         {
             _Model = model;
             _ADC = ADC;
@@ -29,6 +29,7 @@ namespace Logic_Layer
                _Model.ECGLeadValues1_1 = _ADC.ReadCsvLead1();
                _Model.ECGLeadValues1_2 = _ADC.ReadCsvLead2();
                _Model.ECGLeadValues1_3 = _ADC.ReadCsvLead3();
+               Begin_Calculate(_ADC.ReadCsvLead1());
             }
 
             if (measureNumber == 2)
@@ -36,6 +37,7 @@ namespace Logic_Layer
                 _Model.ECGLeadValues2_1 = _ADC.ReadCsvLead1();
                 _Model.ECGLeadValues2_2 = _ADC.ReadCsvLead2();
                 _Model.ECGLeadValues2_3 = _ADC.ReadCsvLead3();
+                Begin_Calculate(_ADC.ReadCsvLead1());
             }
 
             if (measureNumber == 3)
@@ -43,11 +45,12 @@ namespace Logic_Layer
                 _Model.ECGLeadValues3_1 = _ADC.ReadCsvLead1();
                 _Model.ECGLeadValues3_2 = _ADC.ReadCsvLead2();
                 _Model.ECGLeadValues3_3 = _ADC.ReadCsvLead3();
+                Begin_Calculate(_ADC.ReadCsvLead1());
             }
 
         }
 
-        public double Begin_Calcualate(byte[] leadArray)
+        public void Begin_Calculate(byte[] leadArray)
         {
             BitConverter.ToDouble(leadArray, 2);
 
@@ -55,17 +58,15 @@ namespace Logic_Layer
 
             for (int i = 2; i < leadArray.Length; i++)
             {
+                // convertere til liste af doubles
                 leadList.Add(Convert.ToDouble(leadArray[i]));
             }
 
-                //puls
-
-                _puls.Calculate(leadList);
-                _Model.
+            //puls
+            _Model._Pulse = Convert.ToInt32(_puls.Calculate(leadList));
 
             //HRV
-
-            _HRV.Calculate(leadList);
+            _Model._HRV = Convert.ToInt32(_HRV.Calculate(leadList));
 
         }
 
