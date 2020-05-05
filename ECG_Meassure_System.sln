@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation_Layer", "Prese
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainApp", "MainApp\MainApp.csproj", "{44E8790F-66E0-41FF-AB86-8FEF57CA573E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocalDatabase", "LocalDatabase\LocalDatabase.csproj", "{650F2F4B-95B0-4039-A7D5-5E1817C4BF28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Databases", "LocalDatabase\Databases.csproj", "{650F2F4B-95B0-4039-A7D5-5E1817C4BF28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

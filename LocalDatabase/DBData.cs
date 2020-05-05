@@ -1,24 +1,11 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LocalDatabase
+namespace Databases
 {
-    public class PatientContext : DbContext //Omdøb eventuelt klasse til "PatientContext"
-    {
-        public DbSet<PatientMeasurement> PatientMeasurements { get; set; } // En liste af patients - den modsvarer tabellen i databasen. 
-        public DbSet<ECGMeasurement> ECGMeasurements { get; set; } // En liste af ECGMeasurements - den modsvarer tabellen i databasen.
-        public DbSet<ECGLead> ECGLeads { get; set; } // En liste af ECGLeads - den modsvarer tabellen i databasen.
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=LocalDb_Version1.db"); // Åbner forbindelse til database og holder øje med at der er konsistens mellem database og koden
-    }
-
     public class PatientMeasurement // Patient klassen sendes i databasen med følgende: 
     {
         public PatientMeasurement() //Default constructor
@@ -34,25 +21,24 @@ namespace LocalDatabase
             Date = DateTime.Now;
             Pulse = 0;
             HRV = 0;
-            
+
             for (int i = 1; i < 4; i++)
             {
                 ECGMeasurements.Add(new ECGMeasurement(i));
             }
         }
-        
+
         public int PatientMeasurementId { get; set; } //Et autogenerede Id-nummer, der kun passer til den specifikke patient. 
         public string CPRNumber { get; set; } // CPR-nummer tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Name { get; set; } // Navn tilhørende patienten, som indtastes på brugergrænsefladen.
         public string Address { get; set; } // Adresse tilhørende patienten, som indtastes på brugergrænsefladen.
         public DateTime Date { get; set; } // Autogenereret dato, der passer til tidspunktet dataen flyttes til databasen. 
-        public int Pulse { get; set; } // Patientens puls, som er udregnet ud fra den målte EKG data.
-        public int HRV { get; set; } // Patientens HRV, som er udregnet ud fra den målte EKG data.
         public List<ECGMeasurement> ECGMeasurements { get; } // En liste bestående af objekter af klassen ECGMeasurement.
     }
 
     public class ECGMeasurement // ECGMeasurement klassen sendes i databasen og kobles op med Patientobjektet med følgende: 
     {
+
         public ECGMeasurement()
         {
             ECGLeads = new List<ECGLead>();
@@ -72,6 +58,8 @@ namespace LocalDatabase
         public int PatientMeasurementId { get; set; } //Tilknytter ECGMeasurement til den specifikke Patient via PatientId
         public int MeasurementNumber { get; set; } // Et nummer der afgør om det er 1., 2., eller 3. måling
         public List<ECGLead> ECGLeads { get; set; } // En liste bestående af objekter af klassen ECGLead.
+        public int Pulse { get; set; } // Patientens puls, som er udregnet ud fra den målte EKG data.
+        public int HRV { get; set; } // Patientens HRV, som er udregnet ud fra den målte EKG data.
     }
     public class ECGLead // ECGMeasurement klassen sendes i databasen og kobles op med ECGMeasurementobjektet med følgende: 
     {

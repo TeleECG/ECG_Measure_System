@@ -15,9 +15,13 @@ namespace Logic_Layer
 
         public DateTime _Date { get; set; }
 
-        public int _Pulse { get; set; }
+        public int _Pulse1 { get; set; }
+        public int _Pulse2 { get; set; }
+        public int _Pulse3 { get; set; }
 
-        public int _HRV { get; set; }
+        public int _HRV1 { get; set; }
+        public int _HRV2 { get; set; }
+        public int _HRV3 { get; set; }
 
         public byte[] ECGLeadValues1_1 { get; set; } //Byte-array hvor ECG-værdier skal lægges i
         public byte[] ECGLeadValues1_2 { get; set; } //Byte-array hvor ECG-værdier skal lægges i

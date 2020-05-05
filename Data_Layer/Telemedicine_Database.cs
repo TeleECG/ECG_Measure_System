@@ -15,7 +15,7 @@ namespace Data_Layer
         {
             _connection = new SqlConnection("data Source=st-i4dab.uni.au.dk;Initial Catalog=" + _database + ";Persist Security Info=True;User ID=" + _database + ";Password=" + _database + "");
         }
-        public bool Send_ECG(string CPRNumber, string Name, string Address, DateTime Date, List<double> ECG, int Pulse, int HRV)
+        public bool Send_ECG(string CPRNumber, string Name, string Address, DateTime Date, Byte[] ECGLead1_1, Byte[] ECGLead1_2, Byte[] ECGLead1_3, Byte[] ECGLead2_1, Byte[] ECGLead2_2, Byte[] ECGLead2_3, Byte[] ECGLead3_1, Byte[] ECGLead3_2, Byte[] ECGLead3_3, int Pulse1, int Pulse2, int Pulse3, int HRV1, int HRV2, int HRV3)
         {
             var _ECGData = ECG.ToArray().SelectMany(value => BitConverter.GetBytes(value)).ToArray();
 
@@ -25,7 +25,7 @@ namespace Data_Layer
 
                 string insertstringParam =
                     @"INSERT INTO TelemedicineDatabase(CPR, Name, Address, Date, ECG_Measurement, Pulse, HRV) VALUES (@CPRNumber, @Name, @Address, 
-                @Date, @ECG, @Pulse, @HRV)";
+                @Date, @ECGLead1_1, @Pulse, @HRV)";
 
                 using (SqlCommand cmd = new SqlCommand(insertstringParam, _connection))
                 {
