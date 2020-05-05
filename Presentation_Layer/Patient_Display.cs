@@ -12,16 +12,16 @@ namespace Presentation_Layer
     public partial class Patient_Display : Form
     {
         private string CPR { get; set; }
-        string Name { get; set; }
-        string Adress { get; set; }
-        Enter_Patient_Data_Controller _patient_controller;
-        Measure_Display _measure_display;
+        private string Name { get; set; }
+        private string Adress { get; set; }
+
+        readonly Enter_Patient_Data_Controller _patient_controller;
+        readonly Measure_Display _measure_display;
         public Patient_Display(Enter_Patient_Data_Controller patient_controller, Measure_Display measure_Display)
         {
             InitializeComponent();
             _patient_controller = patient_controller;
             _measure_display = measure_Display;
-
         }
 
         private void CPRTB_TextChanged(object sender, EventArgs e)
@@ -32,7 +32,6 @@ namespace Presentation_Layer
         private void NameTB_TextChanged(object sender, EventArgs e)
         {
             Name = NameTB.Text;
-
         }
 
         private void AdressTB_TextChanged(object sender, EventArgs e)
@@ -42,28 +41,22 @@ namespace Presentation_Layer
 
         private void SaveB_Click(object sender, EventArgs e)
         {
-
-            //private IDatabase _database; // oprettet adgang til database-klassen hvor CPR-nummer skal gemmes
-
-            //public IndtastPatientdata(IDatabase Database)
-            //{
-            //    _database = Database;
-            //}
-
             bool CPRCheck = checkCPR(CPR);
 
-            if(CPRCheck = true)
+            if(CPRCheck == true)
             {
                 _patient_controller.SavePatientData(CPR, Name, Adress);
-                _measure_display.ShowDialog();
                 _measure_display.NameMeasureTB.Text = Name; //sætte navn ind i textBox i measureDisplay - har ændret TB til public i stedet for privat. 
+                _measure_display.ShowDialog();
+                CPRTB.Clear();
+                NameTB.Clear();
+                AdressTB.Clear();
             }
-            else if(CPRCheck = false)
+            else
             {
                 MessageBox.Show("Ugyldigt CPR-nummer. Indtast nyt CPR-nummer.");
+                CPRTB.Clear();
             }
-            
-
         }
 
         public bool checkCPR(string CPR)
@@ -101,20 +94,7 @@ namespace Presentation_Layer
             return false;
         }
 
-        //public bool tjekForCPRIDatabase(string cpr)
-        //{
-        //    if (_database.gemCPR(cpr) == true)
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //    //Her kunne der bare stå return _database.gemCPR(cpr);
-        //}
-
     }
-
-
 
 }
     

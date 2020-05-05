@@ -6,9 +6,9 @@ namespace Data_Layer
 {
     public interface IADC
     {
-        public void ReadCsvLead1();
-        public void ReadCsvLead2();
-        public void ReadCsvLead3();
+        public byte[] ReadCsvLead1();
+        public byte[] ReadCsvLead2();
+        public byte[] ReadCsvLead3();
 
     }
 }
