@@ -13,13 +13,11 @@ namespace Presentation_Layer
     {
         private int counter = 0;
         readonly Send_ECG_Controller _send_ECG_Controller;
-        private Patient_Display _patientDisplay;
         private Measure_ECG_Controller _measureECGController;
 
-        public Measure_Display(Send_ECG_Controller send_ECG_Controller, Patient_Display patientDisplay, Measure_ECG_Controller measureECGController)
+        public Measure_Display(Send_ECG_Controller send_ECG_Controller, Measure_ECG_Controller measureECGController)
         {
             _send_ECG_Controller = send_ECG_Controller;
-            _patientDisplay = patientDisplay;
             _measureECGController = measureECGController;
             InitializeComponent();
         }
@@ -66,13 +64,13 @@ namespace Presentation_Layer
                 if (connectionanswer == true)
                 {
                     MessageBox.Show("Målingerne er sendt.");
-                    _patientDisplay.ShowDialog();
+                    this.Hide();
                     counter = 0;
                 }
                 else
                 {
                     MessageBox.Show("Målingerne er sendt.");
-                    _patientDisplay.ShowDialog();
+                    this.Hide();
                     counter = 0;
                 }
             }
@@ -83,7 +81,6 @@ namespace Presentation_Layer
             // Ny patient
             if (counter == 0)
             {
-                _patientDisplay.ShowDialog();
                 this.Hide(); //Skjuler measure display, således at patient display kommer frem
             }
 
