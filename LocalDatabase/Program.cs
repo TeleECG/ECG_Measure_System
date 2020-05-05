@@ -1,15 +1,16 @@
-﻿using Logic_Layer;
+﻿using Databases;
+using Logic_Layer;
 using System;
 using System.Linq;
 
-namespace LocalDatabase
+namespace Databases
 {
     class Program
     {
         static void Main()
         {
             Model _model = new Model();
-            using (var db = new PatientContext()) //Opretter objekt af klassen PatientContext
+            using (var db = new LocalDBContext()) //Opretter objekt af klassen PatientContext
             {
                 // Create
                 Console.WriteLine("Inserting a new blog");
@@ -25,6 +26,14 @@ namespace LocalDatabase
                 PatientMeasurement.ECGMeasurements[2].ECGLeads[0].ECGLeadValues = _model.ECGLeadValues3_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements[2].ECGLeads[1].ECGLeadValues = _model.ECGLeadValues3_2; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements[2].ECGLeads[2].ECGLeadValues = _model.ECGLeadValues3_3; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
+
+                PatientMeasurement.ECGMeasurements[0].Pulse = _model._Pulse1;
+                PatientMeasurement.ECGMeasurements[1].Pulse = _model._Pulse2;
+                PatientMeasurement.ECGMeasurements[2].Pulse = _model._Pulse3;
+
+                PatientMeasurement.ECGMeasurements[0].HRV = _model._HRV1;
+                PatientMeasurement.ECGMeasurements[1].HRV = _model._HRV2;
+                PatientMeasurement.ECGMeasurements[2].HRV = _model._HRV3;
 
                 db.PatientMeasurements.Add(PatientMeasurement); //Her tilføjes Patient objektet til BloggingContext
                 db.SaveChanges(); //Det gemmes
