@@ -1,6 +1,8 @@
 ﻿using Databases;
 using Logic_Layer;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Databases
@@ -38,6 +40,19 @@ namespace Databases
                 db.PatientMeasurements.Add(PatientMeasurement); //Her tilføjes Patient objektet til BloggingContext
                 db.SaveChanges(); //Det gemmes
 
+                List<PatientMeasurement> patientMeasurements;
+                using (var context = new LocalDBContext())
+                {
+                    patientMeasurements = context.PatientMeasurements.Where(patient => patient.CPRNumber == "123456-1243").
+                        Include(patient => patient.ECGMeasurements).
+                            ThenInclude(leads => leads.ECGLeads)
+                        .ToList();
+                    using (var telecontext = new TeleDBContext())
+                    {
+                        telecontext.PatientMeasurements.AddRange(patientMeasurements);
+                        telecontext.SaveChanges();
+                    }
+                }
 
                 //// Read
                 //Console.WriteLine("Querying for a blog");
