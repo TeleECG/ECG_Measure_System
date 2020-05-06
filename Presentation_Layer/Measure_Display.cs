@@ -60,19 +60,10 @@ namespace Presentation_Layer
                 Regret_ECGB.Enabled = false;
                 Start_SendB.Enabled = false;
                 _send_ECG_Controller.Send_ECG_Measurement_Local();
-                bool connectionanswer = _send_ECG_Controller.Send_ECG_Measurement_Tele();
-                if (connectionanswer == true)
-                {
-                    MessageBox.Show("Målingerne er sendt.");
-                    this.Hide();
-                    counter = 0;
-                }
-                else
-                {
-                    MessageBox.Show("Målingerne er sendt.");
-                    this.Hide();
-                    counter = 0;
-                }
+                _send_ECG_Controller.Send_ECG_Measurement_Tele();
+                MessageBox.Show("Målingerne er sendt.");
+                this.Hide();
+                counter = 0;
             }
         }
 

@@ -5,10 +5,9 @@
 //using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using Databases;
 using Microsoft.EntityFrameworkCore;
 
-namespace Databases
+namespace Data_Layer
 {
     
     public class LocalDBContext : DbContext

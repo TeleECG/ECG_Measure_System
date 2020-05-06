@@ -136,7 +136,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Patient_Display";
+            this.Name_ = "Patient_Display";
             this.Text = "Patient_Display";
             this.ResumeLayout(false);
             this.PerformLayout();

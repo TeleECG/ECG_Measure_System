@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Databases
 {
-    class Program
+    class ProgramDB
     {
         static void Main()
         {

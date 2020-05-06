@@ -12,7 +12,7 @@ namespace Presentation_Layer
     public partial class Patient_Display : Form
     {
         private string CPR { get; set; }
-        private string Name { get; set; }
+        private string Name_ { get; set; }
         private string Adress { get; set; }
 
         readonly Enter_Patient_Data_Controller _patient_controller;
@@ -31,7 +31,7 @@ namespace Presentation_Layer
 
         private void NameTB_TextChanged(object sender, EventArgs e)
         {
-            Name = NameTB.Text;
+            Name_ = NameTB.Text;
         }
 
         private void AdressTB_TextChanged(object sender, EventArgs e)
@@ -45,8 +45,8 @@ namespace Presentation_Layer
 
             if(CPRCheck == true)
             {
-                _patient_controller.SavePatientData(CPR, Name, Adress);
-                _measure_display.NameMeasureTB.Text = Name; //sætte navn ind i textBox i measureDisplay - har ændret TB til public i stedet for privat. 
+                _patient_controller.SavePatientData(CPR, Name_, Adress);
+                _measure_display.NameMeasureTB.Text = Name_; //sætte navn ind i textBox i measureDisplay - har ændret TB til public i stedet for privat. 
                 _measure_display.ShowDialog();
                 CPRTB.Clear();
                 NameTB.Clear();

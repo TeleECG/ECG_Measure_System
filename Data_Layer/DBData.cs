@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Databases;
 
-namespace Databases
+namespace Data_Layer
 {
     public class PatientMeasurement // Patient klassen sendes i databasen med følgende: 
     {
