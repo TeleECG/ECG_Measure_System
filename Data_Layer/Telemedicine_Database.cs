@@ -36,7 +36,7 @@ namespace Data_Layer
                     cmd.Parameters.AddWithValue("@ECG", _ECGData);
                     cmd.Parameters.AddWithValue("@Pulse", Pulse);
                     cmd.Parameters.AddWithValue("@HRV", HRV);
-                 
+
                     cmd.ExecuteNonQuery();
                 }
 

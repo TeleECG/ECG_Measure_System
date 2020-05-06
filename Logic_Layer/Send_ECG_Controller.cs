@@ -21,14 +21,14 @@ namespace Logic_Layer
 
         public void Send_ECG_Measurement_Local()
         {
-            _databaseLocal.Send_ECG(_Model._CPRNumber, _Model._Name, _Model._Address, _Model._Date, _Model.ECGLeadValues1_1, _Model.ECGLeadValues1_2, _Model.ECGLeadValues1_3, _Model.ECGLeadValues2_1, _Model.ECGLeadValues2_2, _Model.ECGLeadValues2_3, _Model.ECGLeadValues3_1, _Model.ECGLeadValues3_2, _Model.ECGLeadValues3_3, _Model._Pulse1, _Model._Pulse2, _Model._Pulse3, _Model._HRV1, _Model._HRV2, _Model._HRV3)
-           
+            _databaseLocal.Send_ECG(_Model._CPRNumber, _Model._Name, _Model._Address, _Model._Date, _Model.ECGLeadValues1_1, _Model.ECGLeadValues1_2, _Model.ECGLeadValues1_3, _Model.ECGLeadValues2_1, _Model.ECGLeadValues2_2, _Model.ECGLeadValues2_3, _Model.ECGLeadValues3_1, _Model.ECGLeadValues3_2, _Model.ECGLeadValues3_3, _Model._Pulse1, _Model._Pulse2, _Model._Pulse3, _Model._HRV1, _Model._HRV2, _Model._HRV3);
+            
+            Send_ECG_Measurement_Tele();
+
             while (Send_ECG_Measurement_Tele() == false)
             {
                 Send_ECG_Measurement_Tele();
             }
-
-
         }
 
         public bool Send_ECG_Measurement_Tele()
