@@ -1,10 +1,12 @@
-﻿using Data_Layer;
+﻿using Data_Layer.Data;
+using Data_Layer;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Logic_Layer
 {
@@ -28,9 +30,32 @@ namespace Logic_Layer
                 // Create
                 Console.WriteLine("Inserting a new blog");
                 //Opretter objekt af patient og tilføjer de tilhørende attributter
-                var PatientMeasurement = new PatientMeasurement(_model._CPRNumber, _model._Name, _model._Address);
+                var PatientMeasurement = new PatientMeasurements(/*_model._CPRNumber, _model._Name, _model._Address*/);
 
-                PatientMeasurement.ECGMeasurements[0].ECGLeads[0].ECGLeadValues = _model.ECGLeadValues1_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
+
+                PatientMeasurement.ECGMeasurements = new List<ECGMeasurements>();
+                PatientMeasurement.CPRNumber = _model._CPRNumber;
+                PatientMeasurement.Name = _model._Name;
+                PatientMeasurement.Address = _model._Address;
+                PatientMeasurement.Date = DateTime.Now;
+
+                
+                for (int i = 1; i < 4; i++)
+                {
+                    var p = new ECGMeasurements();
+                    p.MeasurementNumber = i;
+                    PatientMeasurement.ECGMeasurements.Add(p);
+                    
+                    for (int x = 1; x < 4; x++)
+                    {
+                        var t = new ECGLeads();
+                        t.LeadNumber = x;
+                        p.ECGLeads.Add(t);
+                    }
+                }
+
+                //kan ikke indeksere med [] i Icollection
+                PatientMeasurement.ECGMeasurements.IndexOf(0) .ECGLeads[0].ECGLeadValues = _model.ECGLeadValues1_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements[0].ECGLeads[1].ECGLeadValues = _model.ECGLeadValues1_2; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements[0].ECGLeads[2].ECGLeadValues = _model.ECGLeadValues1_3; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements[1].ECGLeads[0].ECGLeadValues = _model.ECGLeadValues2_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
@@ -65,7 +90,7 @@ namespace Logic_Layer
                     ThenInclude(leads => leads.ECGLeads)
                     .ToList();
 
-                using (var telecontext = new TeleDBContext())
+                using (var telecontext = new F20ST4PRJ4TMDBjrtContext())
                 {
                     telecontext.PatientMeasurements.AddRange(patientMeasurements);
                     telecontext.SaveChanges();

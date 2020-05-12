@@ -10,6 +10,8 @@ namespace Data_Layer
     {
         static void Main()
         {
+
+
             //Model _model = new Model();
             //using (var db = new LocalDBContext()) //Opretter objekt af klassen PatientContext
             //{
