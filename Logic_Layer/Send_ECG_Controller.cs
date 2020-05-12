@@ -23,15 +23,6 @@ namespace Logic_Layer
 
         public void Send_ECG_Measurement_Local()
         {
-            //_databaseLocal.Send_ECG(_Model._CPRNumber, _Model._Name, _Model._Address, _Model._Date, _Model.ECGLeadValues1_1, _Model.ECGLeadValues1_2, _Model.ECGLeadValues1_3, _Model.ECGLeadValues2_1, _Model.ECGLeadValues2_2, _Model.ECGLeadValues2_3, _Model.ECGLeadValues3_1, _Model.ECGLeadValues3_2, _Model.ECGLeadValues3_3, _Model._Pulse1, _Model._Pulse2, _Model._Pulse3, _Model._HRV1, _Model._HRV2, _Model._HRV3);
-
-            //Send_ECG_Measurement_Tele();
-
-            //while (Send_ECG_Measurement_Tele() == false)
-            //{
-            //    Send_ECG_Measurement_Tele();
-            //}
-
             using (var db = new LocalDBContext()) //Opretter objekt af klassen PatientContext
             {
                 // Create
@@ -65,19 +56,24 @@ namespace Logic_Layer
         public void Send_ECG_Measurement_Tele()
         {
             List<PatientMeasurement> patientMeasurements;
-            using (var context = new LocalDBContext())
+            using (var dbcontext = new LocalDBContext())
             {
-                patientMeasurements = context.PatientMeasurements.Where(patient => patient.CPRNumber == "123456-1243").
+                //patientMeasurements = context.PatientMeasurements.Where(patient => patient.CPRNumber == "123456-1243").
+
+                patientMeasurements = dbcontext.PatientMeasurements.
                     Include(patient => patient.ECGMeasurements).
                     ThenInclude(leads => leads.ECGLeads)
                     .ToList();
+
                 using (var telecontext = new TeleDBContext())
                 {
                     telecontext.PatientMeasurements.AddRange(patientMeasurements);
                     telecontext.SaveChanges();
                 }
+
+                //Her sletter vi målingen i den lokale database
+                dbcontext.PatientMeasurements.RemoveRange(patientMeasurements);
             }
-            //return _databaseTele.Send_ECG(_model._CPRNumber, _model._Name, _model._Address, _model._Date, _model.ECGLeadValues1_1, _model.ECGLeadValues1_2, _model.ECGLeadValues1_3, _model.ECGLeadValues2_1, _model.ECGLeadValues2_2, _model.ECGLeadValues2_3, _model.ECGLeadValues3_1, _model.ECGLeadValues3_2, _model.ECGLeadValues3_3, _model._Pulse1, _model._Pulse2, _model._Pulse3, _model._HRV1, _model._HRV2, _model._HRV3);
         }
     }
 }
