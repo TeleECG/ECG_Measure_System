@@ -31,8 +31,9 @@ namespace Data_Layer
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer("Data Source=st-i4dab.uni.au.dk; Initial Catalog=" + _database + "; " +
-                                 "Persist Security Info=True; User ID=" + _database + "; Password=" + _database + "");
-        } // Åbner forbindelse til database og holder øje med at der er konsistens mellem database og koden
+                                 "Persist Security Info=True; User ID=" + _database + "; Password=" + _database + "",
+                                 x => x.MigrationsAssembly("TeleMedDBMigration"));
+        }  // Åbner forbindelse til database og holder øje med at der er konsistens mellem database og koden
     }
 
 
