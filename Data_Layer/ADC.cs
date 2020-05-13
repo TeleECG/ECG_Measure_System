@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
 using System.Text;
-using LumenWorks.Framework.IO.Csv;
+
 
 namespace Data_Layer
 {
@@ -19,46 +19,109 @@ namespace Data_Layer
         //Indlæs signal fra Physionet
         public byte[] ReadCsvLead1()
         {
-            //1. Lead
-            var csvTable1 = new DataTable();
-            using (var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead1)), true))
+            using (var reader = new StreamReader(_pathLead1))
             {
-                csvTable1.Load(csvReader);
+                List<double> listA = new List<double>();
+                var h1 = reader.ReadLine();
+                var h2 = reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
+
+                }
+
+                byte[] array = listA.SelectMany(BitConverter.GetBytes).ToArray();
+
+                return array;
             }
-            return ConvertDataTableToByteArray(csvTable1);
         }
 
-        public byte[] ReadCsvLead2() {
-            //2. Lead
-            var csvTable2 = new DataTable();
-            using (var csvReader2 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead2)), true))
-            {
-                csvTable2.Load(csvReader2);
-            }
-            return ConvertDataTableToByteArray(csvTable2);
-        }
 
+        public byte[] ReadCsvLead2()
+        {
+            using (var reader = new StreamReader(_pathLead2))
+            {
+                List<double> listA = new List<double>();
+                var h1 = reader.ReadLine();
+                var h2 = reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
+
+                }
+
+                byte[] array = listA.SelectMany(BitConverter.GetBytes).ToArray();
+
+                return array;
+            }
+        }
         public byte[] ReadCsvLead3()
         {
-            var csvTable3 = new DataTable();
-            using (var csvReader3 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead3)), true))
+            using (var reader = new StreamReader(_pathLead3))
             {
-                csvTable3.Load(csvReader3);
+                List<double> listA = new List<double>();
+                var h1 = reader.ReadLine();
+                var h2 = reader.ReadLine();
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
+
+                }
+
+                byte[] array = listA.SelectMany(BitConverter.GetBytes).ToArray();
+
+                return array;
             }
-            return ConvertDataTableToByteArray(csvTable3);
         }
 
-        private byte[] ConvertDataTableToByteArray(DataTable dataTableConvert)
-        {
-            byte[] binaryDataResult = null;
-            using (MemoryStream memStream = new MemoryStream())
-            {
-                BinaryFormatter brFormatter = new BinaryFormatter();
-                dataTableConvert.RemotingFormat = SerializationFormat.Binary;
-                brFormatter.Serialize(memStream, dataTableConvert);
-                binaryDataResult = memStream.ToArray();
-            }
-            return binaryDataResult;
-        }
+        //public byte[] ReadCsvLead1()
+        //{
+        //    //1. Lead
+        //    var csvTable1 = new DataTable();
+        //    using (var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead1)), true))
+        //    {
+        //        csvTable1.Load(csvReader);
+        //    }
+        //    return ConvertDataTableToByteArray(csvTable1);
+        //}
+
+        //public byte[] ReadCsvLead2() {
+        //    //2. Lead
+        //    var csvTable2 = new DataTable();
+        //    using (var csvReader2 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead2)), true))
+        //    {
+        //        csvTable2.Load(csvReader2);
+        //    }
+        //    return ConvertDataTableToByteArray(csvTable2);
+        //}
+
+        //public byte[] ReadCsvLead3()
+        //{
+        //    var csvTable3 = new DataTable();
+        //    using (var csvReader3 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead3)), true))
+        //    {
+        //        csvTable3.Load(csvReader3);
+        //    }
+        //    return ConvertDataTableToByteArray(csvTable3);
+        //}
+
+        //private byte[] ConvertDataTableToByteArray(DataTable dataTableConvert)
+        //{
+        //    byte[] binaryDataResult = null;
+        //    using (MemoryStream memStream = new MemoryStream())
+        //    {
+        //        BinaryFormatter brFormatter = new BinaryFormatter();
+        //        dataTableConvert.RemotingFormat = SerializationFormat.Binary;
+        //        brFormatter.Serialize(memStream, dataTableConvert);
+        //        binaryDataResult = memStream.ToArray();
+        //    }
+        //    return binaryDataResult;
+        //}
     }
 }
