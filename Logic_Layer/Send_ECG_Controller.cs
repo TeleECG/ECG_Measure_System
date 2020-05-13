@@ -100,8 +100,25 @@ namespace Logic_Layer
             {
                 //patientMeasurements = context.PatientMeasurements.Where(patient => patient.CPRNumber == "123456-1243").
 
-                //Hvad betyder =>?
-                patientMeasurements = dbcontext.PatientMeasurements.Include(patient => patient.ECGMeasurements).ThenInclude(leads => leads.ECGLeads).ToList();
+                //Hvad betyder => lambda, 
+                patientMeasurements = dbcontext.PatientMeasurements.
+                    Include(patient => patient.ECGMeasurements).
+                        ThenInclude(leads => leads.ECGLeads).ToList();
+
+                foreach (var p in patientMeasurements)
+                {
+                    p.PatientMeasurementId = 0;
+
+                    foreach (var e in p.ECGMeasurements)
+                    {
+                        e.ECGMeasurementId = 0;
+
+                        foreach (var l in e.ECGLeads)
+                        {
+                            l.ECGLeadId = 0;
+                        }
+                    }
+                }
 
                 using (var telecontext = new F20ST4PRJ4TeleMedDatabaseContext())
                 {
@@ -110,8 +127,17 @@ namespace Logic_Layer
                 }
 
                 //Her sletter vi målingen i den lokale database
-                //dbcontext.PatientMeasurements.RemoveRange(patientMeasurements);
-            }
+                using (var db = new LocalDBContext())
+                {
+                    patientMeasurements = db.PatientMeasurements.
+                        Include(patient => patient.ECGMeasurements).
+                        ThenInclude(leads => leads.ECGLeads).ToList();
+                    db.PatientMeasurements.RemoveRange(patientMeasurements);
+                    db.SaveChanges();
+                }
+                
+
+            } // Her lukkes databasen automatisk, når using afsluttes
         }
     }
 }

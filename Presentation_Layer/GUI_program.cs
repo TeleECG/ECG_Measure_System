@@ -11,11 +11,14 @@ namespace Presentation_Layer
     {
         Enter_Patient_Data_Controller _patient_Data_Controller;
         Measure_Display _measure_Display;
+        private Send_ECG_Controller _sendEcgController;
+        private Measure_ECG_Controller _measureEcgController;
 
-        public GUI_program(Enter_Patient_Data_Controller patient_Data_Controller, Measure_Display measure_Display )
+        public GUI_program(Enter_Patient_Data_Controller patient_Data_Controller, Send_ECG_Controller sendEcgController, Measure_ECG_Controller measureEcgController )
         {
             _patient_Data_Controller = patient_Data_Controller;
-            _measure_Display = measure_Display;
+            _sendEcgController = sendEcgController;
+            _measureEcgController = measureEcgController;
         }
 
         [STAThread]
@@ -24,7 +27,7 @@ namespace Presentation_Layer
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.Run(new Patient_Display(_patient_Data_Controller, _measure_Display));
+            Application.Run(new Patient_Display(_patient_Data_Controller, new Measure_Display(_sendEcgController, _measureEcgController)));
         }
     }
 }
