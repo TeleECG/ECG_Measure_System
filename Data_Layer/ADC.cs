@@ -28,7 +28,7 @@ namespace Data_Layer
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); //Prøv parse i stedet for konvertering til double 
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
 
                 }
 
@@ -50,7 +50,7 @@ namespace Data_Layer
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); //Prøv parse i stedet for konvertering til double 
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
 
                 }
 
@@ -70,7 +70,7 @@ namespace Data_Layer
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); //Prøv parse i stedet for konvertering til double 
+                    listA.Add(Convert.ToDouble(Double.Parse(values[1].Replace('.', ',')))); 
 
                 }
 
