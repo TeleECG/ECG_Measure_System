@@ -57,12 +57,15 @@ namespace Logic_Layer
                 }
 
                 //Værdier lægges i de 3 leads til hver af de 3 målinger
+                //Måling 1
                 PatientMeasurement.ECGMeasurements.ElementAt(0).ECGLeads.ElementAt(0).ECGLeadValues = _model.ECGLeadValues1_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements.ElementAt(0).ECGLeads.ElementAt(1).ECGLeadValues = _model.ECGLeadValues1_2; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements.ElementAt(0).ECGLeads.ElementAt(2).ECGLeadValues = _model.ECGLeadValues1_3; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
+                //Måling 2
                 PatientMeasurement.ECGMeasurements.ElementAt(1).ECGLeads.ElementAt(0).ECGLeadValues = _model.ECGLeadValues2_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
                 PatientMeasurement.ECGMeasurements.ElementAt(1).ECGLeads.ElementAt(1).ECGLeadValues = _model.ECGLeadValues2_2;
                 PatientMeasurement.ECGMeasurements.ElementAt(1).ECGLeads.ElementAt(2).ECGLeadValues = _model.ECGLeadValues2_3;
+                //Måling 3
                 PatientMeasurement.ECGMeasurements.ElementAt(2).ECGLeads.ElementAt(0).ECGLeadValues = _model.ECGLeadValues3_1;
                 PatientMeasurement.ECGMeasurements.ElementAt(2).ECGLeads.ElementAt(1).ECGLeadValues = _model.ECGLeadValues3_2;
                 PatientMeasurement.ECGMeasurements.ElementAt(2).ECGLeads.ElementAt(2).ECGLeadValues = _model.ECGLeadValues3_3;
