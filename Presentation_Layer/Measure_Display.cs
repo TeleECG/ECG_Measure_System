@@ -11,7 +11,7 @@ namespace Presentation_Layer
 {
     public partial class Measure_Display : Form
     {
-        private int counter = 0;
+        private int counter;
         readonly Send_ECG_Controller _send_ECG_Controller;
         private Measure_ECG_Controller _measureECGController;
 
@@ -30,10 +30,9 @@ namespace Presentation_Layer
             {
                 Start_SendB.Enabled = false;
                 _measureECGController.Measure_ECG(1);
-                NameMeasureTB.Visible = true;
                 Start_SendB.Text = "Start næste måling";
                 Regret_ECGB.Text = "Gentag målingen";
-                MeasureNumberTB.Text = "1/3";
+                MeasureLabel.Text = "Måling 1 ud af 3";
                 Start_SendB.Enabled = true;
             }
 
@@ -41,7 +40,7 @@ namespace Presentation_Layer
             {
                 Start_SendB.Enabled = false;
                 _measureECGController.Measure_ECG(2);
-                MeasureNumberTB.Text = "2/3";
+                MeasureLabel.Text = "Måling 2 ud af 3";
                 Start_SendB.Enabled = true;
             }
 
@@ -50,7 +49,7 @@ namespace Presentation_Layer
                 Start_SendB.Enabled = false;
                 _measureECGController.Measure_ECG(3);
                 Start_SendB.Text = "Send måling";
-                MeasureNumberTB.Text = "3/3";
+                MeasureLabel.Text = "Måling 3 ud af 3";
                 Start_SendB.Enabled = true;
             }
 
@@ -80,9 +79,9 @@ namespace Presentation_Layer
                 Regret_ECGB.Enabled = false;
                 Start_SendB.Enabled = false;
                 _measureECGController.Delete_ECG(1);
-                counter = 0;
-                MeasureNumberTB.Clear();
-                Regret_ECGB.Text = "Ny patient";
+                _measureECGController.Measure_ECG(1);
+                MeasureLabel.Text = "Måling 1 ud af 3";
+                Regret_ECGB.Text = "Gentag målingen";
                 Start_SendB.Enabled = true;
                 Regret_ECGB.Enabled = true;
             }
@@ -92,8 +91,8 @@ namespace Presentation_Layer
                 Regret_ECGB.Enabled = false;
                 Start_SendB.Enabled = false;
                 _measureECGController.Delete_ECG(2);
-                counter = 1;
-                MeasureNumberTB.Text = "1/3";
+                _measureECGController.Measure_ECG(2);
+                MeasureLabel.Text = "Måling 2 ud af 3";
                 Start_SendB.Enabled = true;
                 Regret_ECGB.Enabled = true;
             }
@@ -103,8 +102,8 @@ namespace Presentation_Layer
                 Regret_ECGB.Enabled = false;
                 Start_SendB.Enabled = false;
                 _measureECGController.Delete_ECG(3);
-                counter = 2;
-                MeasureNumberTB.Text = "2/3";
+                _measureECGController.Measure_ECG(3);
+                MeasureLabel.Text = "Måling 3 ud af 3";
                 Start_SendB.Enabled = true;
                 Regret_ECGB.Enabled = true;
             }
