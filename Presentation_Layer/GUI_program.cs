@@ -17,13 +17,13 @@ namespace Presentation_Layer
             _patient_Data_Controller = patient_Data_Controller;
             _measure_Display = measure_Display;
         }
+
         [STAThread]
-       
         public override void Start()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.Run(new Patient_Display(_patient_Data_Controller, _measure_Display));
         }
     }

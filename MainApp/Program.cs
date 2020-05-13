@@ -11,14 +11,10 @@ namespace MainApp
     {
         static void Main(string[] args)
         {
-            
-        }
-        public Program()
-        {
             //Datalayer
             IADC adc = new ADC();
-            IDatabase local_database = new Local_Database();
-            IDatabase telemedicine_database = new Telemedicine_Database();
+            //IDatabase local_database = new Local_Database();
+            //IDatabase telemedicine_database = new Telemedicine_Database();
 
             //Domain layer
             ICalculator HRV_calculator = new HRV_Calculator();
@@ -28,15 +24,16 @@ namespace MainApp
             Model model = new Model();
             Enter_Patient_Data_Controller patient_Data_Controller = new Enter_Patient_Data_Controller(model);
             Measure_ECG_Controller measure_ECG_Controller = new Measure_ECG_Controller(model, adc, HRV_calculator, pulse_calculator);
-            Send_ECG_Controller send_ECG_Controller = new Send_ECG_Controller(model, local_database, telemedicine_database);
+            Send_ECG_Controller send_ECG_Controller = new Send_ECG_Controller(model/*, local_database, telemedicine_database*/);
 
             //Forms
-            
             Measure_Display measure_Display = new Measure_Display(send_ECG_Controller, measure_ECG_Controller);
             IForm GUI_program = new GUI_program(patient_Data_Controller, measure_Display);
             GUI_program.Start();
-
-
+        }
+        public Program()
+        {
+            
         }
 
         
