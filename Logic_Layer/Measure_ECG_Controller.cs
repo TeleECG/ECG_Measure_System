@@ -13,13 +13,15 @@ namespace Logic_Layer
         private IADC _ADC;
         private ICalculator _HRV;
         private ICalculator _puls;
+        private R_peak _rPeak;
 
-        public Measure_ECG_Controller(Model model, IADC ADC, ICalculator HRV, ICalculator puls)
+        public Measure_ECG_Controller(Model model, IADC ADC, ICalculator HRV, ICalculator puls,R_peak rPeak)
         {
             _Model = model;
             _ADC = ADC;
             _HRV = HRV;
             _puls = puls;
+            _rPeak = rPeak;
         }
 
         public void Measure_ECG(int measureNumber)
@@ -65,17 +67,27 @@ namespace Logic_Layer
 
             List<double> leadList = new List<double>();
 
-            for (int i = 2; i < leadArray.Length; i++)
+            for (int i = 0; i < leadArray.Length; i+=8)
             {
                 // convertere til liste af doubles
-                leadList.Add(Convert.ToDouble(leadArray[i]));
+                leadList.Add(BitConverter.ToDouble(leadArray,i));
             }
-
-            //puls
-            int _pulsValue = Convert.ToInt32(_puls.Calculate(leadList));
 
             //HRV
             int _hrvValue = Convert.ToInt32(_HRV.Calculate(leadList));
+
+            List<Vertex> rPeakList =  _rPeak.ReturnVertex();
+            List<double> peakList = new List<double>();
+
+            for (int i = 0; i < rPeakList.Count; i++)
+            {
+                foreach (var peak in rPeakList)
+                {
+                    peakList.Add(1);
+                }
+            }
+            //puls
+            int _pulsValue = Convert.ToInt32(_puls.Calculate(peakList));
 
             return (_pulsValue, _hrvValue);
         }

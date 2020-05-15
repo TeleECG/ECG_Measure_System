@@ -12,16 +12,16 @@ namespace Domain
         private List<double> dataList_;
         private List<Vertex> vertexValues_;
 
-        public R_peak(List<double> measurements)
-        {
-            dataList_ = new List<double>();
-            vertexValues_ = new List<Vertex>();
 
-            dataList_ = measurements;
+        public R_peak(List<double> measurement)
+        {
+            dataList_ = measurement;
+            vertexValues_ = new List<Vertex>();
         }
 
         public List<Vertex> ReturnVertex()//Returnere en liste med toppunkter
         {
+  
             for (int i = 0; i < dataList_.Count; i++)
             {
                 if (dataList_[i] < threshold)
@@ -40,7 +40,7 @@ namespace Domain
                     if (peakYvalue < dataList_[i])//øvrige punkter til listen med toppunkter
                     {
                         peakYvalue = dataList_[i];
-                        peakXValue = i * 0.005;//Undersøg denne, 
+                        peakXValue = i; //* 0.005;//Undersøg denne, 
                         myVertex = new Vertex(peakYvalue, peakXValue);
                     }
                 }
