@@ -18,6 +18,10 @@ namespace Domain
             dataList_ = measurement;
             vertexValues_ = new List<Vertex>();
         }
+        public R_peak()
+        {
+
+        }
 
         public List<Vertex> ReturnVertex()//Returnere en liste med toppunkter
         {

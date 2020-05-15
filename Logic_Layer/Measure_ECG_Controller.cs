@@ -32,9 +32,9 @@ namespace Logic_Layer
                _Model.ECGLeadValues1_2 = _ADC.ReadCsvLead2();
                _Model.ECGLeadValues1_3 = _ADC.ReadCsvLead3();
 
-               (int, int) values = Begin_Calculate(_ADC.ReadCsvLead1());
-               _Model._Pulse1 = values.Item1;
-               _Model._HRV1 = values.Item2;
+               (int, int) values1 = Begin_Calculate(_ADC.ReadCsvLead1());
+               _Model._Pulse1 = values1.Item1;
+               _Model._HRV1 = values1.Item2;
             }
 
             if (measureNumber == 2)
@@ -43,9 +43,9 @@ namespace Logic_Layer
                 _Model.ECGLeadValues2_2 = _ADC.ReadCsvLead2();
                 _Model.ECGLeadValues2_3 = _ADC.ReadCsvLead3();
 
-                (int, int) values = Begin_Calculate(_ADC.ReadCsvLead1());
-                _Model._Pulse2 = values.Item1;
-                _Model._HRV2 = values.Item2;
+                (int, int) values2 = Begin_Calculate(_ADC.ReadCsvLead1());
+                _Model._Pulse2 = values2.Item1;
+                _Model._HRV2 = values2.Item2;
             }
 
             if (measureNumber == 3)
@@ -54,9 +54,9 @@ namespace Logic_Layer
                 _Model.ECGLeadValues3_2 = _ADC.ReadCsvLead2();
                 _Model.ECGLeadValues3_3 = _ADC.ReadCsvLead3();
 
-                (int, int) values = Begin_Calculate(_ADC.ReadCsvLead1());
-                _Model._Pulse3 = values.Item1;
-                _Model._HRV3 = values.Item2;
+                (int, int) values3 = Begin_Calculate(_ADC.ReadCsvLead1());
+                _Model._Pulse3 = values3.Item1;
+                _Model._HRV3 = values3.Item2;
             }
 
         }
@@ -76,6 +76,7 @@ namespace Logic_Layer
             //HRV
             int _hrvValue = Convert.ToInt32(_HRV.Calculate(leadList));
 
+            _rPeak = new R_peak(leadList);
             List<Vertex> rPeakList =  _rPeak.ReturnVertex();
 
             List<double> peakList = new List<double>();
