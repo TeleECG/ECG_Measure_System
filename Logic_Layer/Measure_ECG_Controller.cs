@@ -14,6 +14,7 @@ namespace Logic_Layer
         private ICalculator _HRV;
         private ICalculator _puls;
         private R_peak _rPeak;
+      
 
         public Measure_ECG_Controller(Model model, IADC ADC, ICalculator HRV, ICalculator puls,R_peak rPeak)
         {
@@ -85,7 +86,7 @@ namespace Logic_Layer
                 peakList.Add(rp.Xvalue_);
             }
 
-            int _pulsValue = Convert.ToInt32(_puls.Calculate(peakList));
+           int _pulsValue = Convert.ToInt32(_puls.Calculate(peakList));
             
             return (_pulsValue, _hrvValue);
         }

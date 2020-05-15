@@ -44,7 +44,7 @@ namespace Domain
                     if (peakYvalue < dataList_[i])//øvrige punkter til listen med toppunkter
                     {
                         peakYvalue = dataList_[i];
-                        peakXValue = i; //* 0.005;//Undersøg denne, 
+                        peakXValue = i;//Undersøg denne, 
                         myVertex = new Vertex(peakYvalue, peakXValue);
                     }
                 }
