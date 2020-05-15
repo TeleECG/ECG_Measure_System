@@ -15,8 +15,6 @@ namespace MainApp
         {
             //Datalayer
             IADC adc = new ADC();
-            //IDatabase local_database = new Local_Database();
-            //IDatabase telemedicine_database = new Telemedicine_Database();
 
             //Domain layer
             List<double> measure = new List<double>();
@@ -31,15 +29,9 @@ namespace MainApp
             Send_ECG_Controller send_ECG_Controller = new Send_ECG_Controller(model/*, local_database, telemedicine_database*/);
 
             //Forms
-            //Measure_Display measure_Display = new Measure_Display(send_ECG_Controller, measure_ECG_Controller);
             IForm GUI_program = new GUI_program(patient_Data_Controller, send_ECG_Controller, measure_ECG_Controller);
             GUI_program.Start();
         }
-        public Program()
-        {
-            
-        }
 
-        
     }
 }
