@@ -10,7 +10,6 @@ namespace Presentation_Layer
     public class GUI_program : IForm
     {
         Enter_Patient_Data_Controller _patient_Data_Controller;
-        //Measure_Display _measure_Display;
         private Send_ECG_Controller _sendEcgController;
         private Measure_ECG_Controller _measureEcgController;
 

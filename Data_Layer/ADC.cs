@@ -79,49 +79,5 @@ namespace Data_Layer
                 return array;
             }
         }
-
-        //public byte[] ReadCsvLead1()
-        //{
-        //    //1. Lead
-        //    var csvTable1 = new DataTable();
-        //    using (var csvReader = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead1)), true))
-        //    {
-        //        csvTable1.Load(csvReader);
-        //    }
-        //    return ConvertDataTableToByteArray(csvTable1);
-        //}
-
-        //public byte[] ReadCsvLead2() {
-        //    //2. Lead
-        //    var csvTable2 = new DataTable();
-        //    using (var csvReader2 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead2)), true))
-        //    {
-        //        csvTable2.Load(csvReader2);
-        //    }
-        //    return ConvertDataTableToByteArray(csvTable2);
-        //}
-
-        //public byte[] ReadCsvLead3()
-        //{
-        //    var csvTable3 = new DataTable();
-        //    using (var csvReader3 = new CsvReader(new StreamReader(System.IO.File.OpenRead(_pathLead3)), true))
-        //    {
-        //        csvTable3.Load(csvReader3);
-        //    }
-        //    return ConvertDataTableToByteArray(csvTable3);
-        //}
-
-        //private byte[] ConvertDataTableToByteArray(DataTable dataTableConvert)
-        //{
-        //    byte[] binaryDataResult = null;
-        //    using (MemoryStream memStream = new MemoryStream())
-        //    {
-        //        BinaryFormatter brFormatter = new BinaryFormatter();
-        //        dataTableConvert.RemotingFormat = SerializationFormat.Binary;
-        //        brFormatter.Serialize(memStream, dataTableConvert);
-        //        binaryDataResult = memStream.ToArray();
-        //    }
-        //    return binaryDataResult;
-        //}
     }
 }

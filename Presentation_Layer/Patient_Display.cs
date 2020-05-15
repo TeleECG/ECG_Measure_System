@@ -46,7 +46,6 @@ namespace Presentation_Layer
             if(CPRCheck == true)
             {
                 _patient_controller.SavePatientData(CPR, Name_, Adress);
-                //_measure_display.NameMeasureTB.Text = Name_; //sætte navn ind i textBox i measureDisplay - har ændret TB til public i stedet for privat. 
                 _measure_display.NameL.Text = "Navn: " + Name_;
                 _measure_display.ShowDialog();
                 CPRTB.Clear();

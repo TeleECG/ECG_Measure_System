@@ -13,23 +13,16 @@ namespace Logic_Layer
     public class Send_ECG_Controller
     {
         private Model _model;
-        //private IDatabase _databaseLocal;
-        //private IDatabase _databaseTele;
-
-        public Send_ECG_Controller(Model model /*IDatabase databaseLocal, IDatabase databaseTele*/)
+    
+        public Send_ECG_Controller(Model model)
         {
             _model = model;
-            //_databaseLocal = databaseLocal;
-            //_databaseTele = databaseTele;
         }
 
         public void Send_ECG_Measurement_Local()
         {
             using (var db = new LocalDBContext()) //Opretter objekt af klassen PatientContext
             {
-                // Create
-                //Console.WriteLine("Tilføjer data til lokal database");
-
                 //Opretter objekt af patient og tilføjer de tilhørende attributter
                 var PatientMeasurement = new PatientMeasurements();
 
@@ -80,15 +73,6 @@ namespace Logic_Layer
 
                 db.PatientMeasurements.Add(PatientMeasurement); //Her tilføjes Patient objektet til BloggingContext
                 db.SaveChanges(); //Data gemmes i den lokale database
-
-
-                //kan ikke indeksere med [] i Icollection
-                //PatientMeasurement.ECGMeasurements[1].ECGLeads[1].ECGLeadValues = _model.ECGLeadValues2_2; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
-                //PatientMeasurement.ECGMeasurements[1].ECGLeads[2].ECGLeadValues = _model.ECGLeadValues2_3; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
-                //PatientMeasurement.ECGMeasurements[2].ECGLeads[0].ECGLeadValues = _model.ECGLeadValues3_1; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
-                //PatientMeasurement.ECGMeasurements[2].ECGLeads[1].ECGLeadValues = _model.ECGLeadValues3_2; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
-                //PatientMeasurement.ECGMeasurements[2].ECGLeads[2].ECGLeadValues = _model.ECGLeadValues3_3; // List af double skal konverteres til byte (Listen af double, da vi konverterede csv-filen)
-
             }
         }
 
@@ -98,8 +82,6 @@ namespace Logic_Layer
 
             using (var dbcontext = new LocalDBContext())
             {
-                //patientMeasurements = context.PatientMeasurements.Where(patient => patient.CPRNumber == "123456-1243").
-
                 //Hvad betyder => lambda, 
                 patientMeasurements = dbcontext.PatientMeasurements.
                     Include(patient => patient.ECGMeasurements).
