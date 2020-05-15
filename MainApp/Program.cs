@@ -28,11 +28,6 @@ namespace MainApp
             IForm GUI_program = new GUI_program(patient_Data_Controller, send_ECG_Controller, measure_ECG_Controller);
             GUI_program.Start();
         }
-        public Program()
-        {
-            
-        }
 
-        
     }
 }
