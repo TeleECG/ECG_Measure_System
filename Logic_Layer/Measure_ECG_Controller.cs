@@ -53,8 +53,8 @@ namespace Logic_Layer
                 _Model.ECGLeadValues3_3 = _ADC.ReadCsvLead3();
 
                 (int, int) values = Begin_Calculate(_ADC.ReadCsvLead1());
-                _Model._Pulse2 = values.Item1;
-                _Model._HRV2 = values.Item2;
+                _Model._Pulse3 = values.Item1;
+                _Model._HRV3 = values.Item2;
             }
 
         }
