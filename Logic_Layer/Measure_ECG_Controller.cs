@@ -77,18 +77,15 @@ namespace Logic_Layer
             int _hrvValue = Convert.ToInt32(_HRV.Calculate(leadList));
 
             List<Vertex> rPeakList =  _rPeak.ReturnVertex();
+
             List<double> peakList = new List<double>();
-
-            for (int i = 0; i < rPeakList.Count; i++)
+            foreach(var rp in rPeakList)
             {
-                foreach (var peak in rPeakList)
-                {
-                    peakList.Add(1);
-                }
+                peakList.Add(rp.Xvalue_);
             }
-            //puls
-            int _pulsValue = Convert.ToInt32(_puls.Calculate(peakList));
 
+            int _pulsValue = Convert.ToInt32(_puls.Calculate(peakList));
+            
             return (_pulsValue, _hrvValue);
         }
 

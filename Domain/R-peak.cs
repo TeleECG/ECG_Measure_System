@@ -8,7 +8,7 @@ namespace Domain
 {
     public class R_peak
     {
-        private double threshold = 2.1;//Denne skal vi selv undersøge hvad er
+        private double threshold = 0;//Denne skal vi selv undersøge hvad er
         private List<double> dataList_;
         private List<Vertex> vertexValues_;
 
@@ -51,7 +51,7 @@ namespace Domain
                         vertexValues_.Add(myVertex);
                     }
                     //vertexValues_.Add(myVertex);
-                    peakYvalue = 0;//Der stod før dataList_[0]
+                    peakYvalue = dataList_[0];
                     peakXValue = 0;
                     myVertex = new Vertex(peakYvalue, peakXValue);//Er denne nødvendig
                 }

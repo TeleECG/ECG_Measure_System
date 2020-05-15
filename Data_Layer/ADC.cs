@@ -16,9 +16,9 @@ namespace Data_Layer
         //private string _pathLead2 = @"..\..\Lead2.csv";
         //private string _pathLead3 = @"..\..\Lead3.csv";
         
-        private string _pathLead1 = @"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\Kode\ECG_Measure_System\Data_Layer\Lead1.csv";
-        private string _pathLead2 = @"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\Kode\ECG_Measure_System\Data_Layer\Lead2.csv";
-        private string _pathLead3 = @"C:\Users\ina-m\OneDrive\Dokumenter\4. semester\Projekt\Kode\ECG_Measure_System\Data_Layer\Lead3.csv";
+        private string _pathLead1 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\1Lead.csv";
+        private string _pathLead2 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\2Lead.csv";
+        private string _pathLead3 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\3Lead.csv";
         //Indlæs signal fra Physionet
         public byte[] ReadCsvLead1()
         {
