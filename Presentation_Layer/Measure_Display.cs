@@ -61,8 +61,13 @@ namespace Presentation_Layer
                 _send_ECG_Controller.Send_ECG_Measurement_Local();
                 _send_ECG_Controller.Send_ECG_Measurement_Tele();
                 MessageBox.Show("Målingerne er sendt.");
+                counter = 0; 
                 this.Hide();
-                counter = 0;
+                Start_SendB.Text = "Start måling";
+                Regret_ECGB.Text = "Ny patient";
+                MeasureLabel.Text = "Måling 0 ud af 3";
+                Regret_ECGB.Enabled = true;
+                Start_SendB.Enabled = true;
             }
         }
 
