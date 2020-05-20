@@ -18,7 +18,7 @@ namespace Test_ECG_Measure_System
         private Model _sut;
         private Enter_Patient_Data_Controller _enter_Patient_Data_Controller;
         private Measure_ECG_Controller _measure_ECG_Controller;
-                private IADC _adc;
+        private IADC _adc;
         private ICalculator _HRV;
         private ICalculator _puls;
         private R_peak _rPeak;
