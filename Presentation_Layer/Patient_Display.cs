@@ -23,6 +23,10 @@ namespace Presentation_Layer
             _patient_controller = patient_controller;
             _measure_display = measure_Display;
         }
+        public Patient_Display()
+        {
+         
+        }
 
         private void CPRTB_TextChanged(object sender, EventArgs e)
         {
