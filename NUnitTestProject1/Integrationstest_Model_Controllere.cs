@@ -8,6 +8,7 @@ using Logic_Layer;
 using Data_Layer;
 using Domain;
 using NSubstitute;
+using Data_Layer.Data;
 
 namespace Test_ECG_Measure_System
 {
@@ -17,7 +18,7 @@ namespace Test_ECG_Measure_System
         private Model _sut;
         private Enter_Patient_Data_Controller _enter_Patient_Data_Controller;
         private Measure_ECG_Controller _measure_ECG_Controller;
-        private IADC _adc;
+                private IADC _adc;
         private ICalculator _HRV;
         private ICalculator _puls;
         private R_peak _rPeak;
@@ -33,7 +34,7 @@ namespace Test_ECG_Measure_System
             _puls = Substitute.For<ICalculator>();
             _rPeak = new R_peak();
             _measure_ECG_Controller = new Measure_ECG_Controller(_sut, _adc, _HRV, _puls, _rPeak);
-
+            
         }
 
         [Test]
@@ -78,6 +79,8 @@ namespace Test_ECG_Measure_System
             Assert.That(_sut.ECGLeadValues3_2, Is.EqualTo(null));
             Assert.That(_sut.ECGLeadValues3_3, Is.EqualTo(null));
         }
+
+        
 
 
     }
