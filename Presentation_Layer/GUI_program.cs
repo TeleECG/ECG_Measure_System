@@ -9,6 +9,11 @@ namespace Presentation_Layer
 {
     public class GUI_program : IForm
     {
+        //static void Main(string[] args)
+        //{
+        //    //Console.WriteLine("Hello World!");
+        //}
+
         Enter_Patient_Data_Controller _patient_Data_Controller;
         private Send_ECG_Controller _sendEcgController;
         private Measure_ECG_Controller _measureEcgController;

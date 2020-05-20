@@ -12,14 +12,14 @@ namespace Data_Layer
     public class ADC : IADC
     {
         //Filstreng til de tre afledninger fra Physionet
-        //private string _pathLead1 = @"..\..\Lead1.csv";
-        //private string _pathLead2 = @"..\..\Lead2.csv";
-        //private string _pathLead3 = @"..\..\Lead3.csv";
-        
-        private string _pathLead1 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\1Lead.csv";
-        private string _pathLead2 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\2Lead.csv";
-        private string _pathLead3 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\3Lead.csv";
-        //Indlæs signal fra Physionet
+        private string _pathLead1 = @"..\..\Lead1.csv";
+        private string _pathLead2 = @"..\..\Lead2.csv";
+        private string _pathLead3 = @"..\..\Lead3.csv";
+
+        //private string _pathLead1 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\1Lead.csv";
+        //private string _pathLead2 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\2Lead.csv";
+        //private string _pathLead3 = @"C:\Users\Mie\Cloud\MiesTing\Universitet - ST\4.Semester ST\4. Semesterprojekt\Software\ECG_Measure_System\Data_Layer\3Lead.csv";
+        ////Indlæs signal fra Physionet
         public byte[] ReadCsvLead1()
         {
             using (var reader = new StreamReader(_pathLead1))
