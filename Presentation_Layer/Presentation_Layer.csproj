@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ECG_Measure_System_Test1\Test_ECG_Measure_System.csproj" />
     <ProjectReference Include="..\Logic_Layer\Logic_Layer.csproj" />
   </ItemGroup>
 

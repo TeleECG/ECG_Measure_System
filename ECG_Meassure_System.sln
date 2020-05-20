@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation_Layer", "Prese
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainApp", "MainApp\MainApp.csproj", "{44E8790F-66E0-41FF-AB86-8FEF57CA573E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ECG_Measure_System", "ECG_Measure_System_Test1\Test_ECG_Measure_System.csproj", "{23F1AD97-D64B-41C6-AEAB-A7301C7FA02F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{44E8790F-66E0-41FF-AB86-8FEF57CA573E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44E8790F-66E0-41FF-AB86-8FEF57CA573E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44E8790F-66E0-41FF-AB86-8FEF57CA573E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F1AD97-D64B-41C6-AEAB-A7301C7FA02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F1AD97-D64B-41C6-AEAB-A7301C7FA02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F1AD97-D64B-41C6-AEAB-A7301C7FA02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F1AD97-D64B-41C6-AEAB-A7301C7FA02F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
